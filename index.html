@@ -4131,7 +4131,7 @@
   .tpl-acts .tpl-here{background:var(--accent);border-color:var(--accent);color:#fff;}
   .tpl-acts button:hover{filter:brightness(1.05);border-color:var(--accent);}
   /* ---- głos ---- */
-  .app-toast{position:fixed;left:50%;bottom:54px;z-index:2147481000;transform:translate(-50%, 20px);opacity:0;pointer-events:none;max-width:min(560px, calc(100vw - 32px));
+  .app-toast{position:fixed;left:50%;bottom:54px;z-index:2147483400;transform:translate(-50%, 20px);opacity:0;pointer-events:none;max-width:min(560px, calc(100vw - 32px));
     padding:11px 18px;border-radius:14px;background:#1C1E27;color:#fff;font-size:13px;font-weight:600;line-height:1.45;text-align:center;
     box-shadow:0 18px 40px -16px rgba(0,0,0,.5);transition:opacity .25s, transform .3s var(--ease-spring);}
   .app-toast.is-on{opacity:1;transform:translate(-50%, 0);}
@@ -5257,6 +5257,21 @@
   .app.dk-rail.utility-collapsed .addon-card.open .addon-body-wrap, .app.dk-rail.focus-mode .addon-card.open .addon-body-wrap, .app.dk-rail.note-closed .addon-card.open .addon-body-wrap{display:none !important;}
   .app.dk-rail.utility-collapsed .utility-edge-toggle{right:0 !important;}
   .app.ps-rev.dk-rail.utility-collapsed .utility-edge-toggle{right:auto !important;left:0 !important;}
+  /* fix31: okno instalacji */
+  .inst-ov{position:fixed;inset:0;z-index:2147483300;background:rgba(10,14,30,.42);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:16px;animation:ckIn2b .2s ease-out;}
+  @keyframes ckIn2b{from{opacity:0;}}
+  .inst-box{position:relative;width:min(440px,100%);box-sizing:border-box;background:var(--chrome, #fff);color:var(--text-chrome, #1B2032);border-radius:22px;padding:26px 24px 20px;text-align:center;box-shadow:0 30px 80px -20px rgba(0,0,0,.5);font-size:13px;}
+  .inst-ic img{width:64px;height:64px;border-radius:16px;box-shadow:0 8px 20px -8px rgba(52,87,213,.6);}
+  .inst-box > b{display:block;font-size:18px;font-weight:800;margin:10px 0 4px;}
+  .inst-box > p{margin:0 0 14px;line-height:1.5;color:var(--text-chrome-soft, #5C6478);}
+  .inst-go{border:0;background:var(--accent, #3457D5);color:#fff;font:inherit;font-size:14px;font-weight:800;padding:11px 22px;border-radius:12px;cursor:pointer;margin-bottom:12px;}
+  .inst-go[hidden]{display:none;}
+  .inst-go:hover{filter:brightness(1.08);}
+  .inst-how{text-align:left;background:var(--chrome-raised, #F2F4F8);border-radius:14px;padding:11px 14px 6px;}
+  .inst-how em{font-style:normal;font-weight:800;font-size:12px;}
+  .inst-how ol{margin:6px 0 6px;padding-left:20px;}
+  .inst-how li{margin:4px 0;line-height:1.5;color:var(--text-chrome-soft, #5C6478);}
+  .inst-x{position:absolute;right:10px;top:10px;border:0;background:var(--chrome-raised, #F2F4F8);width:30px;height:30px;border-radius:10px;cursor:pointer;color:var(--text-chrome-soft, #5C6478);}
   .paper-pop.pp-wide.bk-studio.ps-studio{width:820px;height:min(620px, calc(100vh - 80px));}
   .ps-logo{flex:none;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;color:#fff;
     background:conic-gradient(from 200deg, #E0569B, #F2B52C, #3F8A52, #3D6FD6, #8B5CF6, #E0569B);
@@ -36746,7 +36761,8 @@
   function inoInstall(){
     var P = window.inoPWA || {};
     if(P.installed){ appToast('iNotely działa już jako zainstalowana aplikacja.'); return; }
-    if(P.prompt){ P.prompt.prompt(); P.prompt.userChoice.then(function(r){ if(r && r.outcome === 'accepted'){ appToast('Gotowe — iNotely jest na pulpicie i w menu Start.'); stAskPersist(); } P.prompt = null; document.documentElement.classList.remove('ino-can-install'); }); return; }
+    if(P.prompt){ P.prompt.prompt(); P.prompt.userChoice.then(function(r){ if(r && r.outcome === 'accepted'){ appToast('Gotowe — iNotely jest na pulpicie i w menu Start.'); stAskPersist(); } else instDialog(); P.prompt = null; document.documentElement.classList.remove('ino-can-install'); }).catch(function(){ P.prompt = null; instDialog(); }); return; }
+    instDialog(); return;
     var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     var msg = !P.hosted
       ? 'Instalacja działa, gdy iNotely jest otwarte ze strony internetowej (https) razem z plikami aplikacji — np. po wrzuceniu paczki na hosting. Otwarte jako plik z dysku można tylko dodać do zakładek.'
@@ -36836,6 +36852,58 @@
     window.addEventListener('load', build);
     window.lpMqBuild = build;
   })();
+
+  /* fix31: okno instalacji — widoczne także nad stroną powitalną.
+     Gdy przeglądarka da własne okienko instalacji, przycisk „Zainstaluj teraz" je otwiera;
+     w innym wypadku pokazujemy kroki dla tej przeglądarki. */
+  function instDialog(){
+    var P = window.inoPWA || {};
+    var ua = navigator.userAgent;
+    var ios = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var android = /android/i.test(ua);
+    var ff = /firefox|fxios/i.test(ua), edge = /edg\//i.test(ua), opera = /opr\/|opera/i.test(ua);
+    var safariMac = /safari/i.test(ua) && !/chrome|chromium|crios|edg|opr/i.test(ua) && !ios;
+    var steps;
+    if(!P.hosted) steps = ['Instalacja działa tylko wtedy, gdy iNotely jest otwarte ze strony internetowej (adres zaczyna się od https://).', 'Otwarte jako plik z dysku można dodać do zakładek (Ctrl+D).'];
+    else if(ios) steps = ['Otwórz tę stronę w Safari.', 'Stuknij „Udostępnij" (kwadrat ze strzałką w górę).', 'Wybierz „Do ekranu początkowego" → „Dodaj".'];
+    else if(android) steps = ['Stuknij menu ⋮ w prawym górnym rogu przeglądarki.', 'Wybierz „Zainstaluj aplikację" albo „Dodaj do ekranu głównego".'];
+    else if(ff) steps = ['Firefox na komputerze nie instaluje stron jako aplikacji.', 'Otwórz ten sam adres w Chrome, Edge albo Operze i kliknij tam „Zainstaluj".', 'Notatki są osobne w każdej przeglądarce — przenieś je przez Plik → Kopia wszystkiego.'];
+    else if(safariMac) steps = ['W Safari wybierz z menu u góry: Plik → „Dodaj do Docka…".'];
+    else if(edge) steps = ['Kliknij ikonkę z plusem albo komputerem po prawej w pasku adresu, albo:', 'Menu ⋯ → Aplikacje → „Zainstaluj tę witrynę jako aplikację".'];
+    else if(opera) steps = ['Kliknij ikonkę instalacji po prawej w pasku adresu (komputer ze strzałką).', 'Jeśli jej nie ma, odśwież stronę i odczekaj kilka sekund.'];
+    else steps = ['Kliknij ikonkę komputera ze strzałką po prawej w pasku adresu, albo:', 'Menu ⋮ → „Przesyłaj, zapisuj i udostępniaj" → „Zainstaluj stronę jako aplikację…" (w starszych wersjach: ⋮ → „Zainstaluj iNotely…").', 'Jeśli tej opcji nie ma: odśwież stronę (Ctrl+Shift+R), odczekaj kilka sekund i spróbuj jeszcze raz. W oknie incognito instalacja nie działa.'];
+    var ov = document.getElementById('instOv');
+    if(ov) ov.remove();
+    ov = document.createElement('div'); ov.id = 'instOv'; ov.className = 'inst-ov';
+    ov.innerHTML = '<div class="inst-box" role="dialog" aria-modal="true" aria-labelledby="instT">' +
+      '<button type="button" class="inst-x" aria-label="Zamknij">✕</button>' +
+      '<div class="inst-ic"><img src="icons/icon-192.png" alt="" onerror="this.remove()"></div>' +
+      '<b id="instT">Zainstaluj iNotely</b>' +
+      '<p>Ikona na pulpicie i w menu Start, osobne okno, działa bez internetu. Notatki zostają te same.</p>' +
+      '<button type="button" class="inst-go" id="instGo">Zainstaluj teraz</button>' +
+      '<div class="inst-how"><em>' + (P.prompt ? 'Jeśli okienko się nie pokaże:' : 'Jak zainstalować w tej przeglądarce:') + '</em><ol>' + steps.map(function(s){ return '<li>' + s + '</li>'; }).join('') + '</ol></div>' +
+      '</div>';
+    document.body.appendChild(ov);
+    var go = ov.querySelector('#instGo');
+    function sync(){ var p = (window.inoPWA || {}).prompt; go.hidden = !p; }
+    sync();
+    function close(){ ov.remove(); window.removeEventListener('ino-install-ready', sync); window.removeEventListener('keydown', key, true); }
+    function key(e){ if(e.key === 'Escape'){ e.stopPropagation(); close(); } }
+    window.addEventListener('ino-install-ready', sync);
+    window.addEventListener('keydown', key, true);
+    ov.addEventListener('click', function(e){ if(e.target === ov) close(); });
+    ov.querySelector('.inst-x').addEventListener('click', close);
+    go.addEventListener('click', function(){
+      var p = (window.inoPWA || {}).prompt; if(!p) return;
+      p.prompt();
+      p.userChoice.then(function(r){
+        window.inoPWA.prompt = null; document.documentElement.classList.remove('ino-can-install');
+        if(r && r.outcome === 'accepted'){ close(); appToast('Gotowe — iNotely jest na pulpicie i w menu Start.'); try{ stAskPersist(); }catch(e){} }
+        else sync();
+      }).catch(function(){ sync(); });
+    });
+  }
+  window.instDialog = instDialog;
 
   loadAll();
   syncRibbonDensity();
