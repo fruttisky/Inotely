@@ -2,7 +2,7 @@
    Dzięki niemu iNotely instaluje się jako aplikacja i działa bez internetu.
    WAŻNE: po wrzuceniu nowej wersji index.html zmień VERSION poniżej
    (np. dopisz kolejną cyfrę) - wtedy przeglądarki pobiorą nową wersję. */
-const VERSION = 'inotely-2026-09-25-1';
+const VERSION = 'inotely-2026-09-25-7';
 const EXT = 'inotely-ext';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './polityka-prywatnosci.html',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png'];
