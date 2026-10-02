@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Polityka prywatności — iNotely</title>
 <link rel="icon" href="icons/favicon-32.png">
@@ -9,7 +10,7 @@
   :root{--bg:#F4F5F9;--card:#fff;--ink:#1B2032;--mut:#5C6478;--acc:#3457D5;}
   @media (prefers-color-scheme: dark){:root{--bg:#10121A;--card:#181A24;--ink:#EEF0F7;--mut:#A5ACBE;--acc:#7A93FF;}}
   body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;}
-  main{max-width:720px;margin:40px auto;padding:32px 36px;background:var(--card);border-radius:22px;box-shadow:0 20px 50px -30px rgba(0,0,0,.35);}
+  main[hidden]{display:none} main{max-width:720px;margin:40px auto;padding:32px 36px;background:var(--card);border-radius:22px;box-shadow:0 20px 50px -30px rgba(0,0,0,.35);}
   h1{font-size:26px;margin:0 0 4px;} h2{font-size:17px;margin:26px 0 6px;}
   p, li{color:var(--mut);} b{color:var(--ink);} a{color:var(--acc);}
   .mut{font-size:13px;margin:0;}
@@ -18,13 +19,13 @@
 </style>
 </head>
 <body>
-<main>
+<main lang="pl" data-l="pl">
   <a class="back" href="./">← Wróć do iNotely</a>
   <h1>Polityka prywatności iNotely</h1>
   <p class="mut">Ostatnia zmiana: 24 września 2026</p>
 
   <h2>1. Kto odpowiada za stronę</h2>
-  <p>Administratorem strony jest <b>[Twoje imię i nazwisko albo nazwa]</b>, kontakt: <b>[twój adres e-mail]</b>.</p>
+  <p>Administratorem strony jest <b data-admin></b>, kontakt: <b data-email></b>.</p>
 
   <h2>2. Twoje notatki</h2>
   <p>iNotely nie ma kont ani serwera z danymi. Notatki, rysunki, zdjęcia, nagrania i ustawienia zapisują się <b>wyłącznie w Twojej przeglądarce</b> (IndexedDB i pamięć lokalna) na tym urządzeniu. Nie widzimy ich i nie mamy do nich dostępu. Kopię zrobisz sam: Plik → Kopia wszystkiego.</p>
@@ -45,10 +46,197 @@
   <p>Program może poprosić o: mikrofon (dyktowanie i nagrania), aparat (skaner kartek), powiadomienia (przypomnienia z kalendarza) i trwałe przechowywanie danych (żeby przeglądarka nie usunęła notatek przy braku miejsca). Każde z nich działa tylko na tym urządzeniu i możesz je odebrać w ustawieniach przeglądarki.</p>
 
   <h2>6. Twoje prawa</h2>
-  <p>Masz prawo do informacji, dostępu, sprostowania, usunięcia danych i sprzeciwu (RODO). Wszystkie dane iNotely usuniesz sam: Personalizacja → Wygląd → „Usuń wszystkie dane z tej przeglądarki". W innych sprawach napisz: <b>[twój adres e-mail]</b>. Możesz też złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych.</p>
+  <p>Masz prawo do informacji, dostępu, sprostowania, usunięcia danych i sprzeciwu (RODO). Wszystkie dane iNotely usuniesz sam: Personalizacja → Wygląd → „Usuń wszystkie dane z tej przeglądarki". W innych sprawach napisz: <b data-email></b>. Możesz też złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych.</p>
 
   <h2>7. Hosting</h2>
   <p>Firma, która udostępnia pliki strony, może zapisywać techniczne logi serwera (adres IP, czas wejścia) — nie mają one związku z treścią notatek.</p>
 </main>
+<main lang="en" data-l="en" hidden>
+  <a class="back" href="./">← Back to iNotely</a>
+  <h1>iNotely privacy policy</h1>
+  <p class="mut">Last updated: 24 September 2026</p>
+  <h2>1. Who runs this site</h2>
+  <p>The site is run by <b data-admin></b>, contact: <b data-email></b>.</p>
+  <h2>2. Your notes</h2>
+  <p>iNotely has no accounts and no data server. Notes, drawings, photos, recordings and settings are saved <b>only in your browser</b> (IndexedDB and local storage) on this device. We can't see them and have no access to them. You make backups yourself: File → Full backup.</p>
+  <h2>3. Cookies</h2>
+  <p>The site <b>doesn't use cookies</b> — no own, advertising or analytics cookies. Browser storage is used only to make the app work (what you ask for), so no consent is needed.</p>
+  <h2>4. External services (with your consent)</h2>
+  <ul>
+    <li><b>Google Fonts</b> (Google Ireland Ltd.) — fonts.</li>
+    <li><b>jsDelivr</b> and <b>cdnjs (Cloudflare)</b> — libraries for formulas, PDF export and file import.</li>
+    <li><b>Open-Meteo</b> — weather for the weather wallpaper (only the place name or coordinates are sent).</li>
+    <li><b>YouTube</b> (youtube-nocookie.com) — video wallpapers.</li>
+  </ul>
+  <p>With these connections the service sees your IP address and browser data, as with any website. You can change your consent in the app: File → Privacy.</p>
+  <h2>5. Browser permissions</h2>
+  <p>The app may ask for: microphone (dictation and recordings), camera (page scanner), notifications (calendar reminders) and persistent storage (so the browser doesn't delete notes when space runs low). Each works only on this device and you can revoke it in your browser settings.</p>
+  <h2>6. Your rights</h2>
+  <p>You have the right to information, access, rectification, erasure and objection (GDPR). You can delete all iNotely data yourself: Personalize → Appearance → “Delete all data from this browser”. For anything else, write to: <b data-email></b>. You can also lodge a complaint with the Polish data protection authority (President of UODO).</p>
+  <h2>7. Hosting</h2>
+  <p>The company that serves the site's files may keep technical server logs (IP address, time of visit) — they have nothing to do with the content of your notes.</p>
+</main>
+<main lang="ru" data-l="ru" hidden>
+  <a class="back" href="./">← Вернуться в iNotely</a>
+  <h1>Политика конфиденциальности iNotely</h1>
+  <p class="mut">Последнее изменение: 24 сентября 2026 г.</p>
+  <h2>1. Кто отвечает за сайт</h2>
+  <p>Администратор сайта — <b data-admin></b>, контакт: <b data-email></b>.</p>
+  <h2>2. Ваши заметки</h2>
+  <p>В iNotely нет аккаунтов и сервера с данными. Заметки, рисунки, фото, записи и настройки сохраняются <b>только в вашем браузере</b> (IndexedDB и локальное хранилище) на этом устройстве. Мы их не видим и не имеем к ним доступа. Резервную копию вы делаете сами: Файл → Полная резервная копия.</p>
+  <h2>3. Файлы cookie</h2>
+  <p>Сайт <b>не использует cookie</b> — ни собственные, ни рекламные, ни аналитические. Хранилище браузера используется только для работы программы (то, о чём вы просите), поэтому согласие не требуется.</p>
+  <h2>4. Внешние сервисы (с вашего согласия)</h2>
+  <ul>
+    <li><b>Google Fonts</b> (Google Ireland Ltd.) — шрифты.</li>
+    <li><b>jsDelivr</b> и <b>cdnjs (Cloudflare)</b> — библиотеки для формул, экспорта в PDF и импорта файлов.</li>
+    <li><b>Open-Meteo</b> — погода для погодных обоев (передаётся только название или координаты населённого пункта).</li>
+    <li><b>YouTube</b> (youtube-nocookie.com) — видеообои.</li>
+  </ul>
+  <p>При этих подключениях сервис видит ваш IP-адрес и данные браузера, как и любой сайт. Согласие можно изменить в программе: Файл → Конфиденциальность.</p>
+  <h2>5. Разрешения браузера</h2>
+  <p>Программа может запросить: микрофон (диктовка и записи), камеру (сканер страниц), уведомления (напоминания календаря) и постоянное хранилище (чтобы браузер не удалил заметки при нехватке места). Каждое из них действует только на этом устройстве, и вы можете отозвать его в настройках браузера.</p>
+  <h2>6. Ваши права</h2>
+  <p>У вас есть право на информацию, доступ, исправление, удаление данных и возражение (GDPR). Все данные iNotely вы удалите сами: Персонализация → Внешний вид → «Удалить все данные из этого браузера». По другим вопросам пишите: <b data-email></b>. Вы также можете подать жалобу в польский орган по защите данных (Председателю UODO).</p>
+  <h2>7. Хостинг</h2>
+  <p>Компания, которая размещает файлы сайта, может сохранять технические журналы сервера (IP-адрес, время посещения) — они не связаны с содержимым заметок.</p>
+</main>
+<main lang="uk" data-l="uk" hidden>
+  <a class="back" href="./">← Повернутися до iNotely</a>
+  <h1>Політика конфіденційності iNotely</h1>
+  <p class="mut">Остання зміна: 24 вересня 2026 р.</p>
+  <h2>1. Хто відповідає за сайт</h2>
+  <p>Адміністратор сайту — <b data-admin></b>, контакт: <b data-email></b>.</p>
+  <h2>2. Ваші нотатки</h2>
+  <p>В iNotely немає облікових записів і сервера з даними. Нотатки, малюнки, фото, записи й налаштування зберігаються <b>лише у вашому браузері</b> (IndexedDB і локальне сховище) на цьому пристрої. Ми їх не бачимо й не маємо до них доступу. Резервну копію ви робите самі: Файл → Повна резервна копія.</p>
+  <h2>3. Файли cookie</h2>
+  <p>Сайт <b>не використовує cookie</b> — ні власних, ні рекламних, ні аналітичних. Сховище браузера потрібне лише для роботи програми (те, про що ви просите), тому згода не потрібна.</p>
+  <h2>4. Зовнішні сервіси (за вашою згодою)</h2>
+  <ul>
+    <li><b>Google Fonts</b> (Google Ireland Ltd.) — шрифти.</li>
+    <li><b>jsDelivr</b> і <b>cdnjs (Cloudflare)</b> — бібліотеки для формул, експорту в PDF та імпорту файлів.</li>
+    <li><b>Open-Meteo</b> — погода для погодних шпалер (передається лише назва або координати населеного пункту).</li>
+    <li><b>YouTube</b> (youtube-nocookie.com) — відеошпалери.</li>
+  </ul>
+  <p>Під час цих з’єднань сервіс бачить вашу IP-адресу та дані браузера, як і будь-який сайт. Згоду можна змінити в програмі: Файл → Приватність.</p>
+  <h2>5. Дозволи браузера</h2>
+  <p>Програма може попросити: мікрофон (диктування й записи), камеру (сканер сторінок), сповіщення (нагадування календаря) і постійне сховище (щоб браузер не видалив нотатки за браку місця). Кожен дозвіл діє лише на цьому пристрої, і ви можете відкликати його в налаштуваннях браузера.</p>
+  <h2>6. Ваші права</h2>
+  <p>Ви маєте право на інформацію, доступ, виправлення, видалення даних і заперечення (GDPR). Усі дані iNotely ви видалите самі: Персоналізація → Вигляд → «Видалити всі дані з цього браузера». З інших питань пишіть: <b data-email></b>. Ви також можете подати скаргу до польського органу із захисту даних (Голови UODO).</p>
+  <h2>7. Хостинг</h2>
+  <p>Компанія, яка розміщує файли сайту, може зберігати технічні журнали сервера (IP-адреса, час відвідування) — вони не пов’язані із вмістом нотаток.</p>
+</main>
+<main lang="fr" data-l="fr" hidden>
+  <a class="back" href="./">← Retour à iNotely</a>
+  <h1>Politique de confidentialité d'iNotely</h1>
+  <p class="mut">Dernière mise à jour : 24 septembre 2026</p>
+  <h2>1. Responsable du site</h2>
+  <p>Le site est administré par <b data-admin></b>, contact : <b data-email></b>.</p>
+  <h2>2. Vos notes</h2>
+  <p>iNotely n'a ni comptes ni serveur de données. Les notes, dessins, photos, enregistrements et réglages sont enregistrés <b>uniquement dans votre navigateur</b> (IndexedDB et stockage local) sur cet appareil. Nous ne les voyons pas et n'y avons pas accès. Vous faites vous-même vos sauvegardes : Fichier → Sauvegarde complète.</p>
+  <h2>3. Cookies</h2>
+  <p>Le site <b>n'utilise pas de cookies</b> — ni propres, ni publicitaires, ni analytiques. Le stockage du navigateur sert uniquement au fonctionnement de l'application (ce que vous demandez) ; aucun consentement n'est donc requis.</p>
+  <h2>4. Services externes (avec votre consentement)</h2>
+  <ul>
+    <li><b>Google Fonts</b> (Google Ireland Ltd.) — polices.</li>
+    <li><b>jsDelivr</b> et <b>cdnjs (Cloudflare)</b> — bibliothèques pour les formules, l'export PDF et l'import de fichiers.</li>
+    <li><b>Open-Meteo</b> — météo pour le fond d'écran météo (seul le nom ou les coordonnées de la localité sont envoyés).</li>
+    <li><b>YouTube</b> (youtube-nocookie.com) — fonds d'écran vidéo.</li>
+  </ul>
+  <p>Lors de ces connexions, le service voit votre adresse IP et les données de votre navigateur, comme pour tout site. Vous pouvez modifier votre consentement dans l'application : Fichier → Confidentialité.</p>
+  <h2>5. Autorisations du navigateur</h2>
+  <p>L'application peut demander : le micro (dictée et enregistrements), la caméra (scanner de pages), les notifications (rappels du calendrier) et le stockage persistant (pour que le navigateur ne supprime pas les notes en cas de manque d'espace). Chacune ne fonctionne que sur cet appareil et vous pouvez la retirer dans les réglages du navigateur.</p>
+  <h2>6. Vos droits</h2>
+  <p>Vous disposez d'un droit d'information, d'accès, de rectification, d'effacement et d'opposition (RGPD). Vous supprimez vous-même toutes les données d'iNotely : Personnalisation → Apparence → « Supprimer toutes les données de ce navigateur ». Pour toute autre question, écrivez à : <b data-email></b>. Vous pouvez aussi déposer une plainte auprès de l'autorité polonaise de protection des données (Président de l'UODO).</p>
+  <h2>7. Hébergement</h2>
+  <p>L'entreprise qui héberge les fichiers du site peut conserver des journaux techniques du serveur (adresse IP, heure de visite) — ils n'ont aucun lien avec le contenu des notes.</p>
+</main>
+<main lang="it" data-l="it" hidden>
+  <a class="back" href="./">← Torna a iNotely</a>
+  <h1>Informativa sulla privacy di iNotely</h1>
+  <p class="mut">Ultimo aggiornamento: 24 settembre 2026</p>
+  <h2>1. Chi gestisce il sito</h2>
+  <p>Il titolare del sito è <b data-admin></b>, contatto: <b data-email></b>.</p>
+  <h2>2. Le tue note</h2>
+  <p>iNotely non ha account né server con dati. Note, disegni, foto, registrazioni e impostazioni vengono salvati <b>solo nel tuo browser</b> (IndexedDB e archiviazione locale) su questo dispositivo. Non li vediamo e non vi abbiamo accesso. Il backup lo fai tu: File → Backup completo.</p>
+  <h2>3. Cookie</h2>
+  <p>Il sito <b>non usa cookie</b> — né propri, né pubblicitari, né analitici. L'archiviazione del browser serve solo al funzionamento dell'app (ciò che chiedi), quindi non serve il consenso.</p>
+  <h2>4. Servizi esterni (con il tuo consenso)</h2>
+  <ul>
+    <li><b>Google Fonts</b> (Google Ireland Ltd.) — caratteri.</li>
+    <li><b>jsDelivr</b> e <b>cdnjs (Cloudflare)</b> — librerie per formule, esportazione PDF e importazione di file.</li>
+    <li><b>Open-Meteo</b> — meteo per lo sfondo meteo (viene inviato solo il nome o le coordinate della località).</li>
+    <li><b>YouTube</b> (youtube-nocookie.com) — sfondi video.</li>
+  </ul>
+  <p>Con queste connessioni il servizio vede il tuo indirizzo IP e i dati del browser, come per qualsiasi sito. Puoi cambiare il consenso nell'app: File → Privacy.</p>
+  <h2>5. Autorizzazioni del browser</h2>
+  <p>L'app può chiedere: microfono (dettatura e registrazioni), fotocamera (scanner di pagine), notifiche (promemoria del calendario) e archiviazione persistente (perché il browser non cancelli le note quando manca spazio). Ognuna funziona solo su questo dispositivo e puoi revocarla nelle impostazioni del browser.</p>
+  <h2>6. I tuoi diritti</h2>
+  <p>Hai diritto a informazione, accesso, rettifica, cancellazione dei dati e opposizione (GDPR). Tutti i dati di iNotely li elimini tu: Personalizzazione → Aspetto → «Elimina tutti i dati da questo browser». Per altro scrivi a: <b data-email></b>. Puoi anche presentare un reclamo all'autorità polacca per la protezione dei dati (Presidente dell'UODO).</p>
+  <h2>7. Hosting</h2>
+  <p>L'azienda che ospita i file del sito può conservare log tecnici del server (indirizzo IP, ora della visita): non hanno alcun legame con il contenuto delle note.</p>
+</main>
+<main lang="zh" data-l="zh" hidden>
+  <a class="back" href="./">← 返回 iNotely</a>
+  <h1>iNotely 隐私政策</h1>
+  <p class="mut">最后更新：2026 年 9 月 24 日</p>
+  <h2>1. 网站负责人</h2>
+  <p>本网站的管理者为 <b data-admin></b>，联系方式：<b data-email></b>。</p>
+  <h2>2. 你的笔记</h2>
+  <p>iNotely 没有账户，也没有存放数据的服务器。笔记、绘图、照片、录音和设置<b>只保存在你的浏览器中</b>（IndexedDB 和本地存储），位于这台设备上。我们看不到，也无法访问它们。备份由你自己完成：文件 → 完整备份。</p>
+  <h2>3. Cookie</h2>
+  <p>本网站<b>不使用 Cookie</b>——无论是自有、广告还是分析类 Cookie。浏览器存储仅用于让程序运行（即你要求的功能），因此无需征得同意。</p>
+  <h2>4. 外部服务（经你同意）</h2>
+  <ul>
+    <li><b>Google Fonts</b>（Google Ireland Ltd.）——字体。</li>
+    <li><b>jsDelivr</b> 和 <b>cdnjs（Cloudflare）</b>——用于公式、PDF 导出和文件导入的库。</li>
+    <li><b>Open-Meteo</b>——天气壁纸的天气数据（只发送地名或坐标）。</li>
+    <li><b>YouTube</b>（youtube-nocookie.com）——视频壁纸。</li>
+  </ul>
+  <p>建立这些连接时，服务方会像访问任何网站一样看到你的 IP 地址和浏览器信息。你可以在程序中更改同意设置：文件 → 隐私。</p>
+  <h2>5. 浏览器权限</h2>
+  <p>程序可能会请求：麦克风（听写和录音）、摄像头（页面扫描）、通知（日历提醒）以及持久存储（避免浏览器在空间不足时删除笔记）。每项权限只在这台设备上生效，你可以在浏览器设置中撤销。</p>
+  <h2>6. 你的权利</h2>
+  <p>你享有知情、访问、更正、删除数据和反对的权利（GDPR）。你可以自行删除所有 iNotely 数据：个性化 → 外观 → “删除此浏览器中的所有数据”。其他事项请写信至：<b data-email></b>。你也可以向波兰数据保护机构（UODO 主席）投诉。</p>
+  <h2>7. 托管</h2>
+  <p>提供网站文件托管的公司可能会保存服务器技术日志（IP 地址、访问时间）——这些与笔记内容无关。</p>
+</main>
+<main lang="ja" data-l="ja" hidden>
+  <a class="back" href="./">← iNotely に戻る</a>
+  <h1>iNotely プライバシーポリシー</h1>
+  <p class="mut">最終更新日：2026年9月24日</p>
+  <h2>1. サイトの運営者</h2>
+  <p>本サイトの運営者は <b data-admin></b>、連絡先：<b data-email></b> です。</p>
+  <h2>2. あなたのノート</h2>
+  <p>iNotely にはアカウントもデータサーバーもありません。ノート、描画、写真、録音、設定は、この端末の<b>ブラウザ内だけ</b>（IndexedDB とローカルストレージ）に保存されます。私たちはそれを見ることも、アクセスすることもできません。バックアップはご自身で：ファイル → 完全バックアップ。</p>
+  <h2>3. Cookie</h2>
+  <p>本サイトは<b> Cookie を使用しません</b>。自社・広告・分析のいずれの Cookie もありません。ブラウザのストレージはアプリを動かすため（あなたが求める機能のため）だけに使われるので、同意は不要です。</p>
+  <h2>4. 外部サービス（同意した場合のみ）</h2>
+  <ul>
+    <li><b>Google Fonts</b>（Google Ireland Ltd.）— フォント。</li>
+    <li><b>jsDelivr</b> と <b>cdnjs（Cloudflare）</b>— 数式、PDF 書き出し、ファイル読み込み用のライブラリ。</li>
+    <li><b>Open-Meteo</b> — 天気の壁紙用の天気情報（送信されるのは地名または座標のみ）。</li>
+    <li><b>YouTube</b>（youtube-nocookie.com）— 動画の壁紙。</li>
+  </ul>
+  <p>これらの接続では、ほかのサイトと同様に、サービス側にあなたの IP アドレスとブラウザ情報が見えます。同意はアプリ内で変更できます：ファイル → プライバシー。</p>
+  <h2>5. ブラウザの権限</h2>
+  <p>アプリは次の権限を求めることがあります：マイク（音声入力と録音）、カメラ（ページスキャナー）、通知（カレンダーのリマインダー）、永続ストレージ（容量不足時にブラウザがノートを削除しないように）。いずれもこの端末でのみ有効で、ブラウザの設定から取り消せます。</p>
+  <h2>6. あなたの権利</h2>
+  <p>あなたには、情報提供、アクセス、訂正、削除、異議申し立ての権利があります（GDPR）。iNotely のデータはすべてご自身で削除できます：カスタマイズ → 外観 →「このブラウザーのデータをすべて削除」。その他のお問い合わせは <b data-email></b> まで。ポーランドのデータ保護機関（UODO 長官）に苦情を申し立てることもできます。</p>
+  <h2>7. ホスティング</h2>
+  <p>サイトのファイルを提供する会社が、サーバーの技術ログ（IP アドレス、アクセス時刻）を保存する場合があります。これらはノートの内容とは関係ありません。</p>
+</main>
+<script>
+(function(){
+  var ADMIN = "[Twoje imię i nazwisko albo nazwa]", EMAIL = "[twój adres e-mail]";   // fill in once
+  var TITLES = {"pl": "Polityka prywatności — iNotely", "en": "Privacy policy — iNotely", "ru": "Политика конфиденциальности — iNotely", "uk": "Політика конфіденційності — iNotely", "fr": "Politique de confidentialité — iNotely", "it": "Informativa sulla privacy — iNotely", "zh": "隐私政策 — iNotely", "ja": "プライバシーポリシー — iNotely"}, codes = Object.keys(TITLES), lang = "en";
+  try { var q = new URLSearchParams(location.search).get("lang"); var s = localStorage.getItem("inotely-lang"); lang = codes.indexOf(q) >= 0 ? q : codes.indexOf(s) >= 0 ? s : null; } catch (e) { lang = null; }
+  if (!lang) { lang = "en"; var list = navigator.languages || [navigator.language || "en"]; for (var i = 0; i < list.length; i++) { var p = String(list[i]).toLowerCase().split("-")[0]; if (p === "be") p = "ru"; if (codes.indexOf(p) >= 0) { lang = p; break; } } }
+  document.documentElement.lang = lang; document.documentElement.setAttribute('translate','no'); document.title = TITLES[lang];
+  document.querySelectorAll("main[data-l]").forEach(function (m) { m.hidden = m.getAttribute("data-l") !== lang; });
+  document.querySelectorAll("[data-admin]").forEach(function (b) { b.textContent = ADMIN; });
+  document.querySelectorAll("[data-email]").forEach(function (b) { b.textContent = EMAIL; });
+})();
+</script>
 </body>
 </html>
